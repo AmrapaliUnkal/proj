@@ -1,0 +1,166 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Header */
+header {
+    background-color: #2c3e50;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+header nav button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+header nav button:hover {
+    background-color: #c0392b;
+}
+
+/* Main Section */
+main {
+    text-align: center;
+    margin-top: 5rem;
+    background-image: url('/static/images/hotel_background.jpg');
+    background-size: cover;
+    color: white;
+    padding: 3rem;
+}
+
+main h1 {
+    font-size: 3rem;
+}
+
+main p {
+    font-size: 1.2rem;
+}
+
+/* Form Containers */
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 3rem auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.form-container form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container form button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.form-container form button:hover {
+    background-color: #2980b9;
+}
+
+.form-container p {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.form-container p a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.form-container p a:hover {
+    text-decoration: underline;
+}
+
+/* Availability & Room Cards */
+.availability-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+#rooms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.room-card {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.room-card img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.room-card h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.room-card p {
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+.room-card button {
+    background-color: #27ae60;
+    color: white;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.room-card button:hover {
+    background-color: #1e8449;
+}
