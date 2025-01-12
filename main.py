@@ -25,10 +25,10 @@ app.add_middleware(
 )
 
 # Define relative path for the frontend directory
-frontend_path = Path(__file__).parent / "frontend"
+frontend_path = Path(__file__).parent / "static"
 
 # Ensure you mount the 'static' directory correctly for assets (CSS, JS, etc.)
-app.mount("/static", StaticFiles(directory=frontend_path / "static"), name="static")
+app.mount("/static", StaticFiles(directory=frontend_path ), name="static")
 
 # Serve HTML files
 @app.get("/", response_class=HTMLResponse)
@@ -59,6 +59,53 @@ def serve_sign_in():
         return sign_in_file.read_text()
     raise HTTPException(status_code=404, detail="Sign-In page not found.")
 
+@app.get("/option", response_class=HTMLResponse)
+def serve_option():
+    sign_in_file = frontend_path / "option.html"  # Corrected the file name here
+    if sign_in_file.exists():
+        return sign_in_file.read_text()
+    raise HTTPException(status_code=404, detail="option page not found.")
+
+@app.get("/book", response_class=HTMLResponse)
+def serve_book():
+    book = frontend_path / "book.html"  # Corrected the file name here
+    if book.exists():
+        return book.read_text()
+    raise HTTPException(status_code=404, detail="book page not found.")
+
+
+@app.get("/checkout", response_class=HTMLResponse)
+def serve_checkout():
+    book = frontend_path / "checkout.html"  # Corrected the file name here
+    if book.exists():
+        return book.read_text()
+    raise HTTPException(status_code=404, detail="book page not found.")
+
+
+#script file rendering API
+@app.get("/script", response_class=HTMLResponse)
+def serve_scriptJs():
+    sign_in_file = frontend_path / "js/script.js"  # Corrected the file name here
+    if sign_in_file.exists():
+        return sign_in_file.read_text()
+    raise HTTPException(status_code=404, detail="js page not found.")
+
+#css file rendering
+@app.get("/style", response_class=HTMLResponse)
+def serve_style():
+    sign_in_file = frontend_path / "css/style.css"  # Corrected the file name here
+    if sign_in_file.exists():
+        return sign_in_file.read_text()
+    raise HTTPException(status_code=404, detail="css page not found.")
+
+#availity rendering
+@app.get("/availability", response_class=HTMLResponse)
+def serve_availability():
+    sign_in_file = frontend_path / "availability.html"  # Corrected the file name here
+    if sign_in_file.exists():
+        return sign_in_file.read_text()
+    raise HTTPException(status_code=404, detail="availability html page not found.")
+
 @app.get("/signup", response_class=HTMLResponse)
 def serve_sign_up():
     sign_up_file = frontend_path / "signup.html"  # Corrected the file name here
@@ -76,6 +123,9 @@ class RoomBooking(BaseModel):
     room_number: int
     check_in_date: datetime
     check_out_date: datetime
+
+class CheckoutRequest(BaseModel):
+    booking_id:int
 
 @app.post("/signup/")
 def signup(user: UserCreate, db: Session = Depends(get_db)):
@@ -134,9 +184,10 @@ def book_room(booking: RoomBooking, db: Session = Depends(get_db)):
         "booking_id": new_booking.booking_id,
         "total_amount": total_amount,
     }
-
+                            
 @app.post("/checkout/")
-def checkout(booking_id: int, db: Session = Depends(get_db)):
+def checkout(request: CheckoutRequest, db: Session = Depends(get_db)):
+    booking_id = request.booking_id
     booking = db.query(models.Booking).filter(models.Booking.booking_id == booking_id).first()
     if not booking:
         raise HTTPException(status_code=404, detail="Booking not found")

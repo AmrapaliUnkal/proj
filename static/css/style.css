@@ -164,3 +164,119 @@ main p {
 .room-card button:hover {
     background-color: #1e8449;
 }
+
+
+/* Fancy Table Styling */
+.availability-container .fancy-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(97, 10, 10, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.availability-container .fancy-table thead {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.availability-container .fancy-table th,
+.availability-container .fancy-table td {
+    padding: 12px 15px;
+}
+
+.availability-container .fancy-table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.availability-container .fancy-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.availability-container .fancy-table tbody tr:hover {
+    background-color: #f1c40f;
+    color: #2c3e50;
+    cursor: pointer;
+}
+
+.availability-container .fancy-table td {
+    color: #34495e;
+    font-weight: 500;
+}
+
+/* Add button styles */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* General styles for the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container for buttons */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+/* Common button styles */
+.button {
+    width: 200px;
+    height: 60px;
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    line-height: 60px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none; /* Remove underline from the anchor link */
+    display: inline-block; /* Ensure anchor behaves like a block button */
+}
+
+/* Hover effect for all buttons */
+.button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+/* Active state for buttons */
+.button:active {
+    background-color: #1e6fa1;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button {
+        width: 80%;
+        margin-bottom: 1rem;
+    }
+}
