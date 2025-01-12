@@ -8,6 +8,12 @@ class User(Base):
     username = Column(String(50), unique=True, nullable=False)
     password = Column(String(100), nullable=False)
 
+class Admin(Base):
+    __tablename__ = "admin"
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String(50), unique=True, nullable=False)
+    password = Column(String(100), nullable=False)
+
 class Room(Base):
     __tablename__ = "rooms"
     room_number = Column(Integer, primary_key=True, index=True)

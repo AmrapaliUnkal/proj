@@ -21,6 +21,28 @@ document.getElementById("signinForm")?.addEventListener("submit", async (e) => {
     }
 });
 
+
+// Admin Sign In
+document.getElementById("adminsigninForm")?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    const response = await fetch(`${API_BASE}/adminlogin/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+        // alert("Login successful!");
+        window.location.href = "/option";
+    } else {
+        alert(data.detail || "Login failed");
+    }
+});
+
 // Sign Up
 document.getElementById("signupForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -149,5 +171,9 @@ const fetchAvailableRooms = async () => {
 document.addEventListener("DOMContentLoaded", () => {
     fetchAvailableRooms();
 });
+
+
+
+
 
 

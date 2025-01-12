@@ -76,10 +76,24 @@ def serve_book():
 
 @app.get("/checkout", response_class=HTMLResponse)
 def serve_checkout():
-    book = frontend_path / "checkout.html"  # Corrected the file name here
-    if book.exists():
-        return book.read_text()
-    raise HTTPException(status_code=404, detail="book page not found.")
+    checkout = frontend_path / "checkout.html"  # Corrected the file name here
+    if checkout.exists():
+        return checkout.read_text()
+    raise HTTPException(status_code=404, detail="checkout page not found.")
+
+@app.get("/login_option", response_class=HTMLResponse)
+def serve_login_option():
+    login_option = frontend_path / "login_option.html"  # Corrected the file name here
+    if login_option.exists():
+        return login_option.read_text()
+    raise HTTPException(status_code=404, detail="login_option page not found.")
+
+@app.get("/adminlogin", response_class=HTMLResponse)
+def serve_adminlogin():
+    adminlogin = frontend_path / "adminlogin.html"  # Corrected the file name here
+    if adminlogin.exists():
+        return adminlogin.read_text()
+    raise HTTPException(status_code=404, detail="adminlogin page not found.")
 
 
 #script file rendering API
@@ -118,6 +132,10 @@ class UserCreate(BaseModel):
     username: str
     password: str
 
+class AdminCreate(BaseModel):
+    username: str
+    password: str
+
 class RoomBooking(BaseModel):
     username: str
     room_number: int
@@ -145,6 +163,15 @@ def login(user: UserCreate, db: Session = Depends(get_db)):
     if not db_user or not pwd_context.verify(user.password, db_user.password):
         raise HTTPException(status_code=401, detail="Invalid username or password")
     return {"message": "Login successful!"}
+
+
+@app.post("/adminlogin/")  # Corrected the endpoint to match login
+def adminlogin(admin: AdminCreate, db: Session = Depends(get_db)):
+    db_admin = db.query(models.Admin).filter(models.Admin.username == admin.username).first()
+    if not db_admin or not (admin.password == db_admin.password):
+        raise HTTPException(status_code=401, detail="Invalid username or password")
+    return {"message": "Login successful!"}
+
 
 @app.get("/rooms/")
 def get_rooms(db: Session = Depends(get_db)):

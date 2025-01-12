@@ -280,3 +280,65 @@ body {
         margin-bottom: 1rem;
     }
 }
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Login Option Container */
+.login-option-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+}
+
+/* Button Container (Layout for user and admin buttons) */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem; /* Add space between buttons */
+    align-items: center; /* Center the buttons vertically */
+}
+
+/* Style for the image buttons */
+input[type="image"].login-button {
+    width: 150px; /* Set size of the image button */
+    height: 150px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Hover Effect */
+input[type="image"].login-button:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: row; /* Ensure horizontal layout on mobile */
+    }
+
+    input[type="image"].login-button {
+        width: 120px; /* Smaller button size on mobile */
+        height: 120px;
+        margin-bottom: 1rem;
+    }
+}
